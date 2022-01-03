@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  #nav{
+          height:40px; 
+          background:rgb(245, 100, 100);
+          color: white;
+          display: flex;
+         
+          padding-top: 20px;
+      }
+      .navspan{
+          margin-left: 50px;
+         
+      }
+      #signin{
+          width: 100%;
+      }
+      .signinform{
+          margin:20px
+
+      }
+  
+</style>
+<body>
+    <div id="nav">Navbar
+        <div >
+            <span class="navspan"><a href="signin.html"> Sign in</a></span>
+            <span class="navspan"><a href="signup.html">sign up</a></span>
+            <span class="navspan"><a href="menu.html">menu</a></span>
+            <span class="navspan"><a href="cart.html">cart</a></span>
+        </div>
+     
+    </div>
+    <div id="signin">
+        <form id="formsub">
+            <input class="signinform" placeholder="name" id="name"><br>
+            <input class="signinform" type="password"placeholder="password"  id="password"><br>
+            <input class="signinform" type="submit">
+        </form>
+</body>
+<script>
+    var details= JSON.parse( localStorage.getItem('foodaccounts'))
+    document.getElementById('formsub').addEventListener('submit',signin)
+function signin(element){
+  element.preventDefault()
+  var name=  document.getElementById('name').value;
+  var password= document.getElementById('password').value;
+  var count = 0;
+  for(let i= 0; i< details.length;i++){
+
+  if(name==details[i].name&&password==details[i].password){
+      alert('signin successful');
+      count++;
+     window.location.href="menu.html"
+  }
+}if(count==0){
+  alert('wrong credentials')
+  }
+}
+</script>
+</html>

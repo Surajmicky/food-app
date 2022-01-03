@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  #nav{
+          height:40px; 
+          background:rgb(245, 100, 100);
+          color: white;
+          display: flex;
+         
+          padding-top: 20px;
+      }
+      .navspan{
+          margin-left: 50px;
+         
+      }
+      form > input{
+          margin:20px
+      }
+  
+</style>
+<body>
+    <div id="nav">Navbar
+        <div>
+            <span class="navspan"><a href="signin.html"> Sign in</a></span>
+            <span class="navspan"><a href="signup.html">sign up</a></span>
+            <span class="navspan"><a href="menu.html">menu</a></span>
+            <span class="navspan"><a href="cart.html">cart</a></span>
+        </div>
+    </div>
+    <div>
+        <form onsubmit="paid()">
+        <input required type="number" placeholder="card no."><br>
+        <input required type="text"placeholder="name on card "><br>
+        <input required type="text" placeholder="year of expiry"><br>
+        <input required type="text"placeholder="CVV  " ><br>
+        <input required type="submit">
+    </form>
+    </div>
+</body>
+<script>
+   function paid(){
+       alert('your order has been placed')
+   }
+</script>
+</html>

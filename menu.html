@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+  #nav{
+          height:40px; 
+          background:rgb(245, 100, 100);
+          color: white;
+          display: flex;
+         
+          padding-top: 20px;
+      }
+      .navspan{
+          margin-left: 50px;
+         
+      }#box{
+        border: black;
+        height: 500px;
+      }#displaydiv{
+          width: 90%;
+          display: grid;
+           grid-template-columns: repeat(4,1fr);
+      }
+      #boximg{
+          width: 100%;
+          height: 70%;
+          ;
+      }
+  
+</style>
+<body>
+    <div id="nav">Navbar
+        <div>
+            <span class="navspan"><a href="signin.html"> Sign in</a></span>
+            <span class="navspan"><a href="signup.html">sign up</a></span>
+            <span class="navspan"><a href="menu.html">menu</a></span>
+            <span class="navspan"><a href="cart.html">cart</a></span>
+        </div>
+    </div>
+    <div id="container">
+        <button id="getmeal">Get the meal</button>
+        <div id="displaydiv"></div>
+    </div>
+</body>
+<script>
+    let data;
+    document.getElementById('getmeal').addEventListener('click',getmymeal)
+ setTimeout(function(){
+     
+ })
+  function getmymeal(){
+      document.getElementById('displaydiv').innerHTML="";
+      setTimeout(function(){
+          alert ('Your order is accepted');
+      },0);
+      setTimeout(function(){
+          alert('Your order is being cooked');
+      },3000);
+      setTimeout(function(){
+          alert('Your order is ready')
+      },8000);
+      setTimeout(function(){
+          alert ('out for delivery');
+      },10000);
+      setTimeout(function(){
+          alert('Delivered Enjoy the meal')
+  getthemeal();
+  getthemeal();
+  getthemeal();
+  getthemeal();
+  getthemeal();
+  getthemeal();
+  getthemeal();
+  getthemeal();
+ 
+      },12000)
+  async function getthemeal(){
+
+      try{
+        let url='http://www.themealdb.com/api/json/v1/1/random.php';
+        let response=await fetch(url);
+        let data = await response.json();
+        console.log(data)
+        display(data)
+      
+      }
+      catch(err){
+       console.log(err)
+      }
+  }
+
+
+}
+function display(data){
+    var array = JSON.parse(localStorage.getItem('fooditem'))||[];
+   var name= document.createElement('p');
+   name.innerText=data.meals[0].strMeal;
+      var type= document.createElement('p');
+      type.innerText=data.meals[0].strCategory;
+     var box= document.createElement('div');
+     box.setAttribute('id','box')
+   
+     var image = document.createElement('img');
+     image.src=data.meals[0].strMealThumb;
+     image.setAttribute('id','boximg')
+     var price = document.createElement('p');
+     let x = Math.round(Math.random()*500)
+     price.innerText = x;
+     console.log(Math.random(200,500)*500)
+     box.append(image,name,type,price);
+     document.getElementById('displaydiv').append(box);
+     var object = {
+         price:x,
+         name:data.meals[0].strMeal
+     }
+     array.push(object);
+     localStorage.setItem('fooditem',JSON.stringify('array'));
+}
+document.getElementById('box').addEventListener(click,addtocart);
+function addtocart(){
+   var order = event.target.name;
+   console.log(order)
+    
+}
+
+</script>
+</html>
